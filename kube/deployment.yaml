@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myblog-new
+spec:
+  selector:
+    matchLabels:
+      run: myblog-new
+  template:
+    metadata:
+      labels:
+        run: myblog-new
+    spec:
+      containers:
+        - name: myblog-new-containter
+          image: learnk8s/laravel-kubernetes-demo
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_KEY
+              value: base64:io9qeBfzWlijjpVugLHDLbo3p4oifwyhB5eJwO0p10c=
